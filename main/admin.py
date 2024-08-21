@@ -14,3 +14,6 @@ class UserProfileAdmin(admin.ModelAdmin):
 admin.site.register(Comuna, ComunaAdmin)
 admin.site.register(Inmueble, InmuebleAdmin)
 admin.site.register(UserProfile, UserProfileAdmin)
+
+admin.site.site_header = "Arriendos.cl"
+admin.site.index_title = "Bienvenidos al portal de administración de Arriendos.cl"
