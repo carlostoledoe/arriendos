@@ -211,4 +211,4 @@ def delete_propiedad(request, id):
         return redirect('profile')
     else:
         messages.error(request, 'Hubo un problema al eliminar la propiedad, favor revisar')
-        return render(request, 'profile.html', context)
+        return render(request, 'profile.html')
