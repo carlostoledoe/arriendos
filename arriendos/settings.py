@@ -13,11 +13,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
-load_dotenv() # Carga las variables de entorno del archivo .env
+from urllib.parse import urlparse
 
-# Asignando a la variables
-db_user = os.getenv('DB_USER')
-db_password = os.getenv('DB_PASSWORD')
+load_dotenv()
+tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -85,11 +84,11 @@ WSGI_APPLICATION = 'arriendos.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'arriendos',
-        'USER': db_user,
-        'PASSWORD': db_password,
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': tmpPostgres.path.replace('/', ''),
+        'USER': tmpPostgres.username,
+        'PASSWORD': tmpPostgres.password,
+        'HOST': tmpPostgres.hostname,
+        'PORT': 5432,
     }
 }
 
