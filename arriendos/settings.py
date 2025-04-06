@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
-    'django.contrib.humanize'
+    'django.contrib.humanize',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -136,5 +137,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/accounts/login'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# Activar django-storages
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# Asignado variables de entorno de AWS
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET')
+
+# Nombre del bucket
+AWS_STORAGE_BUCKET_NAME = 'arriendos.cl'
+
+# Prefijo del proyecto (esto simula una "carpeta" en S3)
+AWS_LOCATION = 'arriendos/media'
+
+# Para que Django sepa dónde están los archivos
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
