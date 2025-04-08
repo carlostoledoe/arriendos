@@ -12,8 +12,11 @@ Ejemplo de aplicación en Django con arquitecturá distribuida básica:
 Funciones:
 
 * Registrase como arrendador o arrendatario (roles)
+* Cambiar los datos personales y contraseñas
 * Filtrar por Region, Comuna o tipo de inmuebles, de forma directa o combinada (filtros)
 * Crear propiedades y editarlas (CRUD)
+* Un arrendatario no puede crear propiedades
+* Un arrendador no puede editar las propiedades de otros arrendatarios
 
 
 <br>
