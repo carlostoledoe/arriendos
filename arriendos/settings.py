@@ -151,7 +151,7 @@ AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS')
 AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET')
 
 # Nombre del bucket
-AWS_STORAGE_BUCKET_NAME = 'arriendos.cl'
+AWS_STORAGE_BUCKET_NAME = 'arriendos-app'
 
 # Prefijo del proyecto (esto simula una "carpeta" en S3)
 AWS_LOCATION = 'arriendos/media'
